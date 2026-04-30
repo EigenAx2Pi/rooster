@@ -55,9 +55,10 @@ rooster/
 
 ## Origin
 
-Re-imported from public `EigenAx2Pi/ROOSTER` (commit `d227b50`) for
-production-grade upgrade before re-graduating. The old public repo will be
-replaced or archived after `/graduate rooster` runs.
+Originally lived as the public `EigenAx2Pi/ROOSTER` (rule-based only).
+Re-imported into playfield in 2026-04 for a production-grade upgrade
+(ML benchmark, leakage-safe eval, tests, CI, Docker), then graduated to
+this repo at v0.1.0. The old `ROOSTER` repo has been deleted.
 
 ## Status
 

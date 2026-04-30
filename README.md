@@ -3,7 +3,7 @@
 > Predictive employee rosters from historical attendance data.
 > Interpretable rule-based predictor in production, gradient-boosted ML benchmark for evaluation.
 
-[![CI](https://github.com/EigenAx2Pi/ROOSTER/actions/workflows/ci.yml/badge.svg)](https://github.com/EigenAx2Pi/ROOSTER/actions/workflows/ci.yml)
+[![CI](https://github.com/EigenAx2Pi/rooster/actions/workflows/ci.yml/badge.svg)](https://github.com/EigenAx2Pi/rooster/actions/workflows/ci.yml)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
