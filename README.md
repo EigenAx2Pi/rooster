@@ -86,6 +86,8 @@ python -m scripts.benchmark
 | `app/eval.py` | Held-out month evaluation. Aligns predictions and reports precision/recall/F1/AUC. |
 | `app/main.py` | FastAPI service: upload Excel → return populated roster Excel. |
 | `scripts/benchmark.py` | One-command end-to-end benchmark on synthetic data. |
+| `scripts/make_samples.py` | Regenerate the synthetic Excel files in `samples/`. |
+| `samples/` | Ready-to-upload `.xlsx` files so you can try the web UI without your own data. |
 
 ## Stack
 
@@ -109,6 +111,26 @@ docker run --rm -p 8000:8000 rooster:latest
 pip install -e .
 uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
+
+### Try it without your own data
+
+The repo ships sample Excel files in `samples/` so you can exercise the web
+UI immediately:
+
+```bash
+uvicorn app.main:app --port 8000
+# in another terminal — verify against the live API:
+curl -X POST http://localhost:8000/api/predict \
+    -F "roster_file=@samples/roster_sample.xlsx" \
+    -F "holiday_file=@samples/holidays_sample.xlsx" \
+    -F "month=5" -F "year=2025" \
+    -F "threshold=0.6" -F "min_days_per_week=3"
+```
+
+Or upload them through the browser at `http://localhost:8000`. Set
+**month=5, year=2025** — that's the held-out month for the synthetic
+4-month history. To regenerate the samples (e.g. with different
+parameters): `python -m scripts.make_samples`.
 
 ### Benchmark
 
