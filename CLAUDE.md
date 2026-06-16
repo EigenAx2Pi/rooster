@@ -12,6 +12,16 @@ attendance data. Ships **two predictors**:
 See [`README.md`](./README.md) for the human-facing how-to and the design
 rationale ("why rules, not ML").
 
+## Quick start
+
+```bash
+pip install -e ".[dev]"          # pyproject.toml is canonical; requirements.txt is backwards-compat only
+ruff check .                     # lint
+pytest                           # tests (incl. no-leakage test)
+python -m scripts.benchmark      # rule vs ML benchmark on synthetic data (flags: --seed --employees --months)
+uvicorn app.main:app --reload    # run the FastAPI app (upload → Excel out)
+```
+
 ## Layout
 
 ```
@@ -38,8 +48,10 @@ rooster/
 
 ## Working notes
 
-- **Don't recompute features from full history.** The training-time feature
-  window is months `1..N-2`; the test-time feature window is `1..N-1`. Each
+- **Don't recompute features from full history.** (`N` = total months in the
+  history; the held-out test month is `N`, the train-label month is `N-1` —
+  see `scripts/benchmark.py`.) The training-time feature window is months
+  `1..N-2`; the test-time feature window is `1..N-1`. Each
   row's features must be derivable strictly from data dated *before* its
   label's date. `tests/test_ml.py::test_no_label_leakage_in_features` enforces
   this.
