@@ -7,7 +7,7 @@ wip: false
 spine: false
 track: C-Showcase
 next_action: shipped v0.1.0; no users; dormant since April
-last_touched: '2026-06-16'
+last_touched: '2026-07-06'
 ---
 # rooster — Status
 
